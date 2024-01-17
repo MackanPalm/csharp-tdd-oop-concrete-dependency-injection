@@ -8,23 +8,24 @@ namespace tdd_oop_concrete_dependency_injection.CSharp.Main
 {
     public class Computer 
     {
-        public List<Game> installedGames = new List<Game>();
+        private List<Game> installedGames = new List<Game>();
         
-        public PowerSupply powerSupply;
+        private PowerSupply powerSupply;
 
         public Computer(PowerSupply powerSupply) {
             this.powerSupply = powerSupply;
 
-            installedGames.Add(new Game("Dwarf Fortress"));
-            installedGames.Add(new Game("Baldur's Gate"));
+            
         }
-        /*
+        public List<Game> InstalledGames { get { return installedGames; } }
+
+        
         public Computer(PowerSupply powerSupply, List<Game> PreInstalledGames) // added a secondary constructor to take in a list of pre-installed games
         {
             this.powerSupply = powerSupply;
             this.installedGames = PreInstalledGames;
         }
-        */
+        
 
 
         public void turnOn() {
@@ -33,8 +34,8 @@ namespace tdd_oop_concrete_dependency_injection.CSharp.Main
             
         }
 
-        public void installGame(string name) {
-            Game game = new Game(name);
+        public void installGame(Game game) {
+            
             this.installedGames.Add(game);
         }
 
